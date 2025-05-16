@@ -1,36 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabiner <rabiner@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/04 14:54:55 by rabiner           #+#    #+#             */
-/*   Updated: 2025/05/16 15:08:37 by rabiner          ###   ########.fr       */
+/*   Created: 2025/05/16 15:02:10 by rabiner           #+#    #+#             */
+/*   Updated: 2025/05/16 18:51:47 by rabiner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/philo.h"
 
-int	main(int ac, char **av)
+
+int	is_digit(char *str)
 {
-	t_data	data;
+	int	i;
 	
-	if (ac == 5 || ac == 6)// ok
+	i = 0;
+	while (str[i])
 	{
-		//	1)	check_erreurs et parse input
-		parsing(ac, av);
-
-		//	2)	data_init
-		
-		
-		//	3)	start_simulation
-
-		
-		//	4)	leaks
-		
+		if (!(str[i] >=  '0' && str[i] <= '9'))
+			return (1);
+		i++;
 	}
-	else
-		start_error_exit();
 	return (0);
 }
+
+// return: 	0 - ok		1 - error
+void	parsing(int ac, char **av)
+{
+	int	i;
+
+	i = 1;
+	while (av[i])
+	{
+		if (is_digit(av[i]))// voir si isspace
+			error_exit("args must contain only positive numbers");
+		//suite
+
+		i++;
+	}
+	printf("TEST OK\n");//suppr
+}
+

@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabiner <rabiner@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/04 14:54:55 by rabiner           #+#    #+#             */
-/*   Updated: 2025/05/16 15:08:37 by rabiner          ###   ########.fr       */
+/*   Created: 2025/05/12 14:53:45 by binr              #+#    #+#             */
+/*   Updated: 2025/05/16 15:06:34 by rabiner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/philo.h"
 
-int	main(int ac, char **av)
+void	error_exit(const char *error)
 {
-	t_data	data;
-	
-	if (ac == 5 || ac == 6)// ok
-	{
-		//	1)	check_erreurs et parse input
-		parsing(ac, av);
+	printf("Error:\t%s\n", error);
+	exit(EXIT_FAILURE);
+}
 
-		//	2)	data_init
-		
-		
-		//	3)	start_simulation
-
-		
-		//	4)	leaks
-		
-	}
-	else
-		start_error_exit();
-	return (0);
+void	start_error_exit()
+{
+	printf("4 or 5 args needed\nav[1]: nbr of philos\n \
+		\rav[2]: time_to_die (ms)\nav[3]: time_to_eat(ms)\n \
+		\rav[4]: time_to_sleep(ms)\n \
+		\rav[5]: nbr_of_time_each_philo_must_eat (optional)\n");
+	exit(EXIT_FAILURE);
 }

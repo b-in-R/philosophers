@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gettimeofday.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabiner <rabiner@student.42.fr>            +#+  +:+       +#+        */
+/*   By: binr <binr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 14:54:55 by rabiner           #+#    #+#             */
-/*   Updated: 2025/05/06 14:28:10 by rabiner          ###   ########.fr       */
+/*   Updated: 2025/05/12 14:51:15 by binr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,6 @@ int	main(int ac, char **av)
 	gettimeofday(&tv_base, NULL);
 	curtime_sec = tv_base.tv_sec;// 		temps en sec depuis 1.01.1970
 	curtime_usec = tv_base.tv_usec;//	temps en microsec dans la sec en cours
-	/*
-			interdit?
-		
-			strftime(buffer, 30, "%d-%m-%Y   %T", localtime(&curtime));
-			printf("buffer:\t\t%s\n", buffer);
-			printf("tv.tv_sec:\t%ld\n", tv.tv_sec);
-	*/
 	printf("tv.tv_sec:\t\t%ld\n", curtime_sec);
 	printf("tv.tv_usec:\t\t%ld\n", curtime_usec);
 	

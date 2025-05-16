@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rabiner <rabiner@student.42.fr>            +#+  +:+       +#+         #
+#    By: rabiner <rabiner@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/29 12:28:22 by rabiner           #+#    #+#              #
-#    Updated: 2025/05/04 14:54:51 by rabiner          ###   ########.fr        #
+#    Updated: 2025/05/16 18:48:31 by rabiner          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,10 @@ NAME = philo
 
 CC = cc
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -g #-Wall -Wextra -Werror
 
 SRCS_DIR = srcs
-SRCS =	philo.c
+SRCS =	philo.c parsing.c utils.c
 
 SRCS := $(addprefix $(SRCS_DIR)/, $(SRCS))
 
