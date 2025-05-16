@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   gettimeofday.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: binr <binr@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rabiner <rabiner@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 14:54:55 by rabiner           #+#    #+#             */
-/*   Updated: 2025/05/12 14:51:15 by binr             ###   ########.fr       */
+/*   Updated: 2025/05/16 18:54:48 by rabiner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "../headers/philo.h"
 
 
 
