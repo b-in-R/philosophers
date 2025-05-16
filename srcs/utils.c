@@ -6,7 +6,7 @@
 /*   By: rabiner <rabiner@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 14:53:45 by binr              #+#    #+#             */
-/*   Updated: 2025/05/16 15:06:34 by rabiner          ###   ########.fr       */
+/*   Updated: 2025/05/16 18:56:45 by rabiner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	error_exit(const char *error)
 {
-	printf("Error:\t%s\n", error);
+	printf("Error: %s\n", error);
 	exit(EXIT_FAILURE);
 }
 
