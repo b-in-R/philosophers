@@ -6,7 +6,7 @@
 /*   By: rabiner <rabiner@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:02:10 by rabiner           #+#    #+#             */
-/*   Updated: 2025/05/16 18:51:47 by rabiner          ###   ########.fr       */
+/*   Updated: 2025/05/19 13:25:24 by rabiner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,3 @@ void	parsing(int ac, char **av)
 	}
 	printf("TEST OK\n");//suppr
 }
-
