@@ -6,12 +6,11 @@
 /*   By: rabiner <rabiner@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 14:44:33 by rabiner           #+#    #+#             */
-/*   Updated: 2025/10/04 15:07:40 by rabiner          ###   ########.fr       */
+/*   Updated: 2025/10/04 15:22:21 by rabiner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#ifndef	PHILO_H
+#ifndef PHILO_H
 # define PHILO_H
 
 # include <stdio.h>
@@ -39,7 +38,6 @@
 # define ERR_NOT_DIGIT "Error: argument %d is not a digit\n"
 # define ERR_INVALID_INT "Error: argument value must be positive.\n"
 # define ERR_PHILO_MAX "Error: num of philosophers must be between 1 & %d\n"
-
 
 typedef struct s_table	t_table;
 typedef struct s_data
@@ -77,7 +75,6 @@ int		init_philosophers(t_table *table);
 int		init_mutexes(t_table *table);
 void	assign_forks(t_table *table);
 
-
 // parsing.c
 int		is_valid_input(int ac, char **av);
 
@@ -91,13 +88,12 @@ void	destroy_mutexes(t_table *table);
 void	destroy_base_mutexes(t_table *table, unsigned int fork_count);
 void	safe_print(t_table *table, int id, char *str);
 
-
 // philo.c
 void	*philo_routine(void *arg);
 
 // philo_actions.c
 void	eat(t_data *philo);
-void	sleep_and_think(t_data  *philo);
+void	sleep_and_think(t_data *philo);
 void	take_forks(t_data *philo);
 void	drop_forks(t_data *philo);
 
