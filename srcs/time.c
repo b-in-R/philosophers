@@ -6,51 +6,57 @@
 /*   By: rabiner <rabiner@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 15:05:57 by rabiner           #+#    #+#             */
-/*   Updated: 2025/05/12 15:32:37 by rabiner          ###   ########.fr       */
+/*   Updated: 2025/10/04 15:02:53 by rabiner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/philo.h"
+#include "../includes/philo.h"
 
-// oceano 1:20:00 - 1:21:50
-void	precise_usleep(long usec, t_data *data)
+long	get_time(void)
+{
+	struct timeval	tv;
+	long long		time_in_ms;
+
+	gettimeofday(&tv, NULL);
+	time_in_ms = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
+	return (time_in_ms);
+}
+
+void	ft_usleep(unsigned int time_in_ms, t_table *table)
 {
 	long	start;
 	long	elapsed;
-	long	rem;
-	
-	start = gettime(MICROS);
-	while (gettime(MICROS) - start < usec)
+	long	remaining;
+
+	start = get_time();
+	while (1)
 	{
-		if (simalutaion_finished(data))
-			break;
-		elapsed = gettime(MICROS) - start;
-		rem = usec - elapsed;
-		
-		if (rem > 1e3)
-			usleep(usec / 2);
+		if (get_sim_stop(table))
+			break ;
+		elapsed = get_time() - start;
+		if (elapsed >= (long)time_in_ms)
+			break ;
+		remaining = (long)time_in_ms - elapsed;
+		if (remaining > 5)
+			usleep((remaining - 5) * 1000);
 		else
-		{
-			while (gettime(MICROS) - start < usec)
-				;
-		}
+			usleep(500);
 	}
 }
 
-// oceano 1:10:00  - 1:14:00
-long	gettime(t_time_code time_code)
+void	prepare_start_time(t_table *table)
 {
-	struct timeval	tv;
-	
-	if (gettimeofday(&tv, NULL))
-		error_exit("gettimeofday failed\n");
-	if (SECOND == time_code)
-		return (tv.tv_sec + (tv.tv_usec / 1e6));
-	else if (MILLIS == time_code)
-		return ((tv.tv_sec * 1e3) + (tv.tv_usec / 1e3));
-	else if (MICROS == time_code)
-		return ((tv.tv_sec * 1e6) + tv.tv_usec);
-	else
-		error_exit("wrong arg in gettime\n");
-	return (NULL);
+	unsigned int	i;
+	long			start_time;
+
+	start_time = get_time();
+	table->start_time = start_time;
+	i = 0;
+	while (i < table->nb_philos)
+	{
+		pthread_mutex_lock(&table->philos[i].meal_time_lock);
+		table->philos[i].last_meal = start_time;
+		pthread_mutex_unlock(&table->philos[i].meal_time_lock);
+		i++;
+	}
 }

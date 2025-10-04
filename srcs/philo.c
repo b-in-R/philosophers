@@ -6,31 +6,39 @@
 /*   By: rabiner <rabiner@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 14:54:55 by rabiner           #+#    #+#             */
-/*   Updated: 2025/05/16 15:08:37 by rabiner          ###   ########.fr       */
+/*   Updated: 2025/10/04 15:13:35 by rabiner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/philo.h"
+#include "../includes/philo.h"
 
-int	main(int ac, char **av)
+static void	handle_single_philo(t_data *philo)
 {
-	t_data	data;
-	
-	if (ac == 5 || ac == 6)// ok
+	pthread_mutex_lock(philo->left_fork);
+	safe_print(philo->table, philo->id, "has taken a fork");
+	while (!get_sim_stop(philo->table))
+		usleep(1000);
+	pthread_mutex_unlock(philo->left_fork);
+}
+
+void	*philo_routine(void *arg)
+{
+	t_data	*philo;
+
+	philo = (t_data *)arg;
+	if (philo->table->nb_philos == 1)
 	{
-		//	1)	check_erreurs et parse input
-		parsing(ac, av);
-
-		//	2)	data_init
-		
-		
-		//	3)	start_simulation
-
-		
-		//	4)	leaks
-		
+		handle_single_philo(philo);
+		return (NULL);
 	}
-	else
-		start_error_exit();
-	return (0);
+	if (philo->id % 2 == 0)
+		usleep(1000);
+	while (!get_sim_stop(philo->table))
+	{
+		take_forks(philo);
+		eat(philo);
+		drop_forks(philo);
+		sleep_and_think(philo);
+	}
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 #    By: rabiner <rabiner@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/29 12:28:22 by rabiner           #+#    #+#              #
-#    Updated: 2025/05/16 18:48:31 by rabiner          ###   ########.fr        #
+#    Updated: 2025/10/04 15:15:06 by rabiner          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,16 @@ RM = rm -f
 CFLAGS = -g #-Wall -Wextra -Werror
 
 SRCS_DIR = srcs
-SRCS =	philo.c parsing.c utils.c
+SRCS =	init.c \
+		main.c \
+		monitor.c \
+		parsing_utils.c \
+		parsing.c \
+		philo_actions.c \
+		philo.c \
+		threads.c \
+		time.c \
+		utils.c \
 
 SRCS := $(addprefix $(SRCS_DIR)/, $(SRCS))
 
